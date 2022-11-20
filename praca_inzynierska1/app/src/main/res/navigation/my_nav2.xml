@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/my_nav2"
+    app:startDestination="@id/mainPageFragment2">
+    <fragment
+        android:id="@+id/ListProductsFragment"
+        android:name="com.example.praca_inzynierska.beginFragment"
+        android:label="fragment_products_list"
+        tools:layout="@layout/fragment_products_list" >
+        <action
+            android:id="@+id/action_ListProductsFragment_to_descriptionListProductsFragment"
+            app:destination="@id/descriptionListProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainPageFragment2"
+        android:name="com.example.praca_inzynierska.MainPageFragment"
+        android:label="fragment_page_main"
+        tools:layout="@layout/fragment_page_main" >
+        <action
+            android:id="@+id/action_mainPageFragment2_to_ListFragment"
+            app:destination="@id/ListProductsFragment" />
+        <action
+            android:id="@+id/action_mainPageFragment2_to_profilFragment2"
+            app:destination="@id/profilFragment2" />
+        <action
+            android:id="@+id/action_mainPageFragment2_to_listUsersFragment"
+            app:destination="@id/listUsersFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/profilFragment2"
+        android:name="com.example.praca_inzynierska.ProfilFragment"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profilFragment2_to_modifyUserListFragment"
+            app:destination="@id/modifyUserListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listUsersFragment"
+        android:name="com.example.praca_inzynierska.ListUsersFragment"
+        android:label="fragment_list_users"
+        tools:layout="@layout/fragment_list_users" />
+    <fragment
+        android:id="@+id/modifyUserListFragment"
+        android:name="com.example.praca_inzynierska.ModifyUserListFragment"
+        android:label="fragment_modify_user_list"
+        tools:layout="@layout/fragment_modify_user_list" />
+    <fragment
+        android:id="@+id/descriptionListProductsFragment"
+        android:name="com.example.praca_inzynierska.DescriptionListProductsFragment"
+        android:label="fragment_description_list_products"
+        tools:layout="@layout/fragment_description_list_products" />
+</navigation>

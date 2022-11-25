@@ -15,7 +15,7 @@ import kotlinx.android.synthetic.main.fragment_products_list.*
 var CoWybrales2="prezes"
 var ListaRekordowDoModyfikacji2=ArrayList<DatabaseRowListUsers>()
 var CoWybralesdostepSpinner="user"
-class ListUsersFragment : Fragment() {
+class ListUsersFragment : BaseFragment() {
 
 
     //inicjalizacja komponentow z xmla i z firebase i inne
@@ -30,6 +30,7 @@ class ListUsersFragment : Fragment() {
     private  lateinit var listOfItems2:ArrayList<DatabaseRowListUsers>
     private lateinit var spinner: Spinner
     private lateinit var dostepSpinner: Spinner
+    private lateinit var dodajUzytkownikow: Button
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -48,11 +49,16 @@ class ListUsersFragment : Fragment() {
         WyborZRozwijanejListy=view.findViewById(R.id.WyborZRozwijanejListy)
         Szukaj=view.findViewById(R.id.szukaj)
         poleSzukania=view.findViewById(R.id.poleSzukania)
+        dodajUzytkownikow=view.findViewById(R.id.dodajUzytkownikow)
+        dodajUzytkownikow.setOnClickListener {
+//            auth.signOut()
+            startApp2()
+        }
 
 //opcje w rozwijanej liscie spinner
         //?????????????????????
-//        val options= arrayOf("administrator systemu","kierownik marketingu i logistyki","pracownik biurowy","pracownik magazynowy ")
-        val options= arrayOf("administrator","kierownik","pracownikB","pracownikM")
+        val options= arrayOf("administrator systemu","kierownik marketingu i logistyki","pracownik biurowy","pracownik magazynowy")
+//        val options= arrayOf("administrator","kierownik","pracownikB","pracownikM")
         spinner.adapter= ArrayAdapter<String>(this.requireActivity(),android.R.layout.simple_list_item_1,options)
 
         spinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
@@ -119,7 +125,7 @@ class ListUsersFragment : Fragment() {
                     tabbb.add(tabbb[3]+1)//tu tez trzeba zmieniac pod ilosc elementow
                 }
 
-                for (j3 in pozycja+6..100){//tu tez trzeba zmieniac pod ilosc elementow
+                for (j3 in pozycja+6..200){//tu tez trzeba zmieniac pod ilosc elementow
                     if(calyStringRekordu[j3]==','||calyStringRekordu[j3]==')'){
                         break
                     }else {
@@ -212,6 +218,13 @@ class ListUsersFragment : Fragment() {
     }
     //aktualizowanie adaptera
     private  fun setupAdapter(arrayData:ArrayList<DatabaseRowListUsers>){
-        recyclerview2.adapter= AdapterListUsers(arrayData)
+
+//to trzeba dodac zeby blad nie wyskakiwal kiedy jest null
+        if(recyclerview2==null){
+
+        }else{
+            recyclerview2.adapter= AdapterListUsers(arrayData)
+        }
+
     }
 }

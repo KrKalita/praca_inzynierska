@@ -32,6 +32,28 @@ class MainPageFragment : Fragment() {
         lista_produktow.setOnClickListener {
             findNavController().navigate(R.id.ListProductsFragment)
         }
+        var dostepDoRejestracji=view.findViewById<Button>(R.id.dostepDoRejestracji)
+
+        var kk=0
+        dostepDoRejestracji.setOnClickListener {
+            if(wyciagnietyDostep=="user"){
+//                lista_uzytkownikow.isEnabled=false
+//            lista_uzytkownikow.isEnabled=true
+                if(kk==0){
+                    Toast.makeText(requireContext(),"Kliknij jeszcze raz!",Toast.LENGTH_LONG).show()
+                    kk++
+                }else{
+                    Toast.makeText(requireContext(),"Ta opcja jest przeznaczona tylko dla ADMINISTRATORA",Toast.LENGTH_LONG).show()
+                    kk--
+                }
+
+            }else{
+
+                dostepRejestracja()
+
+
+            }
+        }
         var lista_uzytkownikow=view.findViewById<Button>(R.id.lista_uzytkownikow)
 
         //to do kontrolowania czy ktos ma dostep do listy_uzytkownikow, jesli administartor to ma dostep
@@ -86,6 +108,45 @@ class MainPageFragment : Fragment() {
             }
 
         })
+
+
+
+    }
+    fun dostepRejestracja(){
+        var firebase= FirebaseDatabase.getInstance()
+        myRef=firebase.getReference("dostepDoRejestracji")
+        var a=""
+var kkk=1
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onCancelled(databaseError: DatabaseError) {
+                var cos=""
+            }
+
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                var uid=fbAuth.currentUser?.uid.toString()
+                for(i in dataSnapshot.children){
+
+                    if(kkk==1){
+                        val newRow10=i.getValue()
+                        if(newRow10=="1"){
+                            a="0"
+                            Toast.makeText(requireContext(),"Rejestracja wyłączona!!",Toast.LENGTH_LONG).show()
+                        }else{
+                            a="1"
+                            Toast.makeText(requireContext(),"Rejestracja włączona!!",Toast.LENGTH_LONG).show()
+                        }
+                        myRef.child("dostep").setValue(a)
+                    }
+kkk=0
+
+                }
+
+
+            }
+
+        })
+        kkk=1
+
 
     }
 

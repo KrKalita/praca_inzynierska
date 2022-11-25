@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import androidx.navigation.fragment.findNavController
 
 
 class DescriptionListProductsFragment : Fragment() {
@@ -21,7 +22,14 @@ class DescriptionListProductsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        view.findViewById<TextView>(R.id.tytul).text=tytulProduktu
-        view.findViewById<TextView>(R.id.typ_produktu).text=typProduktu
+        view.findViewById<TextView>(R.id.nazwa).text=nazwaProduktu
+        view.findViewById<TextView>(R.id.strefa).text=strefaProduktu
+        view.findViewById<TextView>(R.id.id).text=idProduktu
+        var modyfikuj=view.findViewById<TextView>(R.id.modyfikuj)
+        modyfikuj.setOnClickListener{
+            findNavController().navigate(R.id.action_descriptionListProductsFragment_to_modifyProductListFragment)
+        }
+
+
     }
 }

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/black"
-    tools:context=".DescriptionListProductsFragment" >
+    tools:context=".ModifyProductListFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -53,13 +53,17 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content" />
 
-            <TextView
+            <EditText
                 android:id="@+id/nazwa"
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="cos"
+                android:layout_weight="1"
+                android:background="@color/szary"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:textColor="@color/white"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -97,38 +101,5 @@
             android:text="Modyfikuj"
             android:textSize="16sp" />
 
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/change_background_button"
-            android:text="Lista lokalizacji produktu tylko dla strefy składowania"
-            android:textSize="16sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/change_background_button"
-            android:text="przenieś do strefy składowania"
-            android:textSize="16sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/change_background_button"
-            android:text="przenieś do strefy kompletowania i wydawania towaru"
-            android:textSize="16sp" />
-
-        <Button
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="10dp"
-            android:background="@drawable/change_background_button"
-            android:text="wyslij zamowienie do klienta"
-            android:textSize="16sp" />
-
     </LinearLayout>
-
 </FrameLayout>

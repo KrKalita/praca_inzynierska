@@ -6,12 +6,15 @@
     app:startDestination="@id/mainPageFragment2">
     <fragment
         android:id="@+id/ListProductsFragment"
-        android:name="com.example.praca_inzynierska.beginFragment"
+        android:name="com.example.praca_inzynierska.ListProductsFragment"
         android:label="fragment_products_list"
         tools:layout="@layout/fragment_products_list" >
         <action
             android:id="@+id/action_ListProductsFragment_to_descriptionListProductsFragment"
             app:destination="@id/descriptionListProductsFragment" />
+        <action
+            android:id="@+id/action_ListProductsFragment_to_addListProductsFragment"
+            app:destination="@id/addListProductsFragment" />
     </fragment>
     <fragment
         android:id="@+id/mainPageFragment2"
@@ -51,5 +54,19 @@
         android:id="@+id/descriptionListProductsFragment"
         android:name="com.example.praca_inzynierska.DescriptionListProductsFragment"
         android:label="fragment_description_list_products"
-        tools:layout="@layout/fragment_description_list_products" />
+        tools:layout="@layout/fragment_description_list_products" >
+        <action
+            android:id="@+id/action_descriptionListProductsFragment_to_modifyProductListFragment"
+            app:destination="@id/modifyProductListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addListProductsFragment"
+        android:name="com.example.praca_inzynierska.AddListProductsFragment"
+        android:label="fragment_add_list_products"
+        tools:layout="@layout/fragment_add_list_products" />
+    <fragment
+        android:id="@+id/modifyProductListFragment"
+        android:name="com.example.praca_inzynierska.ModifyProductListFragment"
+        android:label="fragment_modify_product_list"
+        tools:layout="@layout/fragment_modify_product_list" />
 </navigation>

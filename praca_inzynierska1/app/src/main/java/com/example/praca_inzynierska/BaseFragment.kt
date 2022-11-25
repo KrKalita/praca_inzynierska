@@ -10,4 +10,10 @@ abstract class BaseFragment: Fragment() {
         }
         startActivity(intent)
     }
+    protected fun startApp2(){
+        val intent2 = Intent(requireContext(), MainActivity3::class.java).apply {
+            flags = (Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
+        }
+        startActivity(intent2)
+    }
 }

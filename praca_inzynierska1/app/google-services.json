@@ -1,34 +1,34 @@
 {
   "project_info": {
-    "project_number": "698222071356",
-    "firebase_url": "https://pracainzynierska-c7061-default-rtdb.firebaseio.com",
-    "project_id": "pracainzynierska-c7061",
-    "storage_bucket": "pracainzynierska-c7061.appspot.com"
+    "project_number": "191484857066",
+    "firebase_url": "https://pracainzynierska-d217a-default-rtdb.firebaseio.com",
+    "project_id": "pracainzynierska-d217a",
+    "storage_bucket": "pracainzynierska-d217a.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:698222071356:android:c2e14da9b11c3df8c1bd39",
+        "mobilesdk_app_id": "1:191484857066:android:3bf0999b066cc26b4c2593",
         "android_client_info": {
           "package_name": "com.example.praca_inzynierska"
         }
       },
       "oauth_client": [
         {
-          "client_id": "698222071356-6hn3paj74hhkjjs4vpjubpdpv1f4d21u.apps.googleusercontent.com",
+          "client_id": "191484857066-4u1p9ggm35m0i6pr5i7c2f67i6nq9mq2.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCIydImWpvPfpA_FdKaz2lThZs0hFlrLyE"
+          "current_key": "AIzaSyCdZEHzjgfzWnappuuEOv_-NkmRghYqlDA"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "698222071356-6hn3paj74hhkjjs4vpjubpdpv1f4d21u.apps.googleusercontent.com",
+              "client_id": "191484857066-4u1p9ggm35m0i6pr5i7c2f67i6nq9mq2.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

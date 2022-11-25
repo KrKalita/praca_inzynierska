@@ -48,6 +48,48 @@
             android:background="@drawable/change_background_button"
             android:text="lista użytkowników" />
 
+        <Button
+            android:id="@+id/dostepDoRejestracji"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/change_background_button"
+            android:text="Dostęp do rejestracji" />
+
+        <Button
+            android:id="@+id/lista_kosztow"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/change_background_button"
+            android:text="Lista kosztów" />
+
+        <Button
+            android:id="@+id/komunikatySM"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/change_background_button"
+            android:text="Komunikaty stanu magazynowania" />
+
     </LinearLayout>
 
 </FrameLayout>

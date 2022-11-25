@@ -79,6 +79,15 @@
                 android:layout_height="10dp" />
 
             <Button
+                android:id="@+id/dodajUzytkownikow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:background="@drawable/change_background_button"
+                android:text="Dodaj użytkowników"
+                android:textSize="16sp" />
+
+            <Button
                 android:id="@+id/WyborZRozwijanejListy"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"

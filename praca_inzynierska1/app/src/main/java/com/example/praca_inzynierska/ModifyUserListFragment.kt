@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -53,6 +54,7 @@ class ModifyUserListFragment : Fragment() {
             myRef.child(uid).child("nazwisko").setValue(b)
             wyciagnieteImie=a
             wyciagnieteNazwisko=b
+            Toast.makeText(requireContext(),"Modyfikacja zakończona!", Toast.LENGTH_LONG).show()
         }
     }
 

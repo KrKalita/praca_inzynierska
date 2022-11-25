@@ -18,7 +18,7 @@ var ListaRekordowDoModyfikacji=ArrayList<DatabaseRowListProducts>()
 var wielkosc=0
 var wielkosc2=0
 
-class beginFragment : Fragment() {
+class ListProductsFragment : Fragment() {
 
     //inicjalizacja komponentow z xmla i z firebase i inne
     private lateinit var myRef: DatabaseReference
@@ -44,7 +44,7 @@ class beginFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //inicjalizacja komponentow z xmla
         dodaj2=view.findViewById(R.id.dodaj2)
-        wpiszTytul=view.findViewById(R.id.wpiszTytul)
+//        wpiszTytul=view.findViewById(R.id.wpiszTytul)
         spinner=view.findViewById(R.id.spinner)
         PokazCalaListe=view.findViewById(R.id.PokazCalaListe)
         WyborZRozwijanejListy=view.findViewById(R.id.WyborZRozwijanejListy)
@@ -52,7 +52,7 @@ class beginFragment : Fragment() {
         poleSzukania=view.findViewById(R.id.poleSzukania)
 
         //opcje w rozwijanej liscie
-        val options= arrayOf("meble","zabawki","jedzenie")
+        val options= arrayOf("przyjęcia towaru","składowania","kompletowania i wydania produktów")
 
         spinner.adapter= ArrayAdapter<String>(this.requireActivity(),android.R.layout.simple_list_item_1,options)
 
@@ -73,12 +73,15 @@ class beginFragment : Fragment() {
         recyclerview2.layoutManager= GridLayoutManager(context, 1)
 //jak przycisne dodaj to dodaje do fire base jeden rekord z wybraną opcją z listy rozwijanej i tytułem
         dodaj2.setOnClickListener {
-            val tytul=wpiszTytul.text.toString()
-            if(tytul!=""){
-                val typ_produktu=CoWybrales
-                val firebaseInput=DatabaseRowListProducts(tytul,typ_produktu)
-                myRef.child(tytul).setValue(firebaseInput)
-            }
+
+//            val tytul=wpiszTytul.text.toString()
+//            if(tytul!=""){
+//                val typ_produktu=CoWybrales
+//                val firebaseInput=DatabaseRowListProducts("id1",tytul,typ_produktu)
+//                myRef.child(tytul).setValue(firebaseInput)
+//            }
+            findNavController().navigate(R.id.action_ListProductsFragment_to_addListProductsFragment)
+
         }
 //aktualizacja
 
@@ -97,12 +100,12 @@ class beginFragment : Fragment() {
                 var calyStringRekordu=i.toString()
                 var wybor=""
                 var pozycja=0
-                var tabbb= arrayListOf(0,1,2,3,4,5,6,7,8,9,10,11)
+                var tabbb= arrayListOf(0,1,2,3,4,5)
                 for (j1 in 0..100){
                     for (j2 in tabbb){
                         wybor=wybor+calyStringRekordu[j2]
                     }
-                    if(wybor=="typ_produktu"){//kod jest bardzo elastyczny do danej sytuacji i wystarczy podać miejsce w, którym chcesz wycignac wartosc
+                    if(wybor=="strefa"){//kod jest bardzo elastyczny do danej sytuacji i wystarczy podać miejsce w, którym chcesz wycignac wartosc
                         wybor=""
                         pozycja=j1
                         break
@@ -110,10 +113,10 @@ class beginFragment : Fragment() {
                         wybor=""
                     }
                     tabbb.remove(tabbb[0])
-                    tabbb.add(tabbb[10]+1)
+                    tabbb.add(tabbb[4]+1)
                 }
 
-                for (j3 in pozycja+13..100){
+                for (j3 in pozycja+7..100){
                     if(calyStringRekordu[j3]==','||calyStringRekordu[j3]==')'){
                         break
                     }else {
@@ -160,7 +163,7 @@ class beginFragment : Fragment() {
                 for(i in ListaRekordowDoModyfikacji){
 
                     var a=i.toString()
-                    var b=i.toString().indexOf("tytul")+6//indeks na ktorym sie zaczyna tytul(na potrzeby wyciagniecia tytulu ze stringa)
+                    var b=i.toString().indexOf("nazwa")+6//indeks na ktorym sie zaczyna tytul(na potrzeby wyciagniecia tytulu ze stringa)
 //szukam rekordow nie pasujacych do słowa klucz i je usuwam
                     var hhhh=0
                     for (i in b..b+l) {
@@ -207,7 +210,13 @@ class beginFragment : Fragment() {
     }
     //aktualizowanie adaptera
     private  fun setupAdapter(view: View,arrayData:ArrayList<DatabaseRowListProducts>){
-        recyclerview2.adapter= AdapterListProducts(view,arrayData)
+        //to trzeba dodac zeby blad nie wyskakiwal kiedy jest null
+        if(recyclerview2==null){
+
+        }else{
+            recyclerview2.adapter= AdapterListProducts(view,arrayData)
+        }
+
     }
 
 }

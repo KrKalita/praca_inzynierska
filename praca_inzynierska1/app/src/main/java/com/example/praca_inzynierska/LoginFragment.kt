@@ -7,13 +7,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.Toast
 import androidx.navigation.findNavController
 import com.google.android.material.snackbar.Snackbar
 import com.google.android.material.textfield.TextInputEditText
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
-
+import com.google.firebase.database.*
+var CzyDostep=""
 
 class LoginFragment : BaseFragment() {
     private val fbAuth = FirebaseAuth.getInstance()
@@ -34,7 +34,46 @@ class LoginFragment : BaseFragment() {
         //jak kline w zarejestruj to przejdz do fragmentu zaloguj
         view.findViewById<Button>(R.id.zarejestruj1).apply {
             setOnClickListener {
-                view.findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+
+                var firebase= FirebaseDatabase.getInstance()
+                myRef=firebase.getReference("dostepDoRejestracji")
+                var kkk=1
+                myRef.addValueEventListener(object : ValueEventListener {
+                    override fun onCancelled(databaseError: DatabaseError) {
+                        var cos=""
+                    }
+
+                    override fun onDataChange(dataSnapshot: DataSnapshot) {
+                        var uid=fbAuth.currentUser?.uid.toString()
+                        for(i in dataSnapshot.children){
+
+                            if(kkk==1){
+                                val newRow10=i.getValue()
+                                if(newRow10=="1"){
+                                    CzyDostep="1"
+                                    Toast.makeText(requireContext(),"Rejestracja włączona!!",
+                                        Toast.LENGTH_LONG).show()
+                                    view.findNavController().navigate(R.id.action_loginFragment_to_registrationFragment)
+                                }else{
+                                    CzyDostep="0"
+                                    Toast.makeText(requireContext(),"Rejestracja wyłączona!!",
+                                        Toast.LENGTH_LONG).show()
+                                }
+                            }
+                            kkk=0
+
+                        }
+
+
+                    }
+
+                })
+                kkk=1
+
+
+
+
+
             }
         }
         view.findViewById<Button>(R.id.zaloguj1).apply {

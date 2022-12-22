@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal"
+            android:padding="5dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:background="@drawable/border">
+
+
+                <TextView
+                    android:id="@+id/id_cost"
+                    android:layout_marginStart="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="id"
+                    android:textColor="#6C6A6A"
+                    android:textSize="25sp" />
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_marginStart="4dp"
+                        android:id="@+id/nazwa_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="opis"
+                        android:textColor="#6C6A6A"
+                        android:textSize="20sp" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_marginStart="4dp"
+                        android:id="@+id/desc_typ_cost"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Typ:"
+                        android:textColor="#6C6A6A"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/typCost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:autoSizeMinTextSize="2dp"
+                        android:text="typ"
+                        android:textColor="#6C6A6A"
+                        android:textSize="20sp" />
+
+
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_marginStart="4dp"
+                        android:id="@+id/desc_value_cost"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Wartość:"
+                        android:textColor="#6C6A6A"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/value_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="wartosc"
+                        android:textColor="#6C6A6A"
+                        android:textSize="20sp" />
+
+
+                    <Button
+                        android:id="@+id/opis_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/change_background_button"
+                        android:text="opis"
+                        android:textSize="16sp" />
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
@@ -34,6 +35,9 @@ class ModifyUserListFragment : Fragment() {
         var zawod=view.findViewById<TextView>(R.id.zawod)
         var dostep=view.findViewById<TextView>(R.id.dostep)
         var modyfikuj=view.findViewById<Button>(R.id.modyfikuj)
+        var cancel_user=view.findViewById<Button>(R.id.cancel_user)
+
+
         imie.setText(wyciagnieteImie)
         nazwisko.setText(wyciagnieteNazwisko)
         email.text=wyciagnietyEmail
@@ -55,6 +59,10 @@ class ModifyUserListFragment : Fragment() {
             wyciagnieteImie=a
             wyciagnieteNazwisko=b
             Toast.makeText(requireContext(),"Modyfikacja zakończona!", Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_modifyUserListFragment_to_profilFragment2)
+        }
+        cancel_user.setOnClickListener(){
+            findNavController().navigate(R.id.action_modifyUserListFragment_to_profilFragment2)
         }
     }
 

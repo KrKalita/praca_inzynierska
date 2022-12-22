@@ -32,6 +32,11 @@ class MainPageFragment : Fragment() {
         lista_produktow.setOnClickListener {
             findNavController().navigate(R.id.ListProductsFragment)
         }
+        var lista_kosztow=view.findViewById<Button>(R.id.lista_kosztow)
+        lista_kosztow.setOnClickListener{
+            findNavController().navigate(R.id.listCostFragment)
+        }
+
         var dostepDoRejestracji=view.findViewById<Button>(R.id.dostepDoRejestracji)
 
         var kk=0

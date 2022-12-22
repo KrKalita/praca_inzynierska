@@ -9,6 +9,8 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
 
@@ -34,6 +36,7 @@ class ModifyProductListFragment : Fragment() {
         view.findViewById<TextView>(R.id.waga).setText(wagaProduktu)
 
         var modyfikuj=view.findViewById<Button>(R.id.modyfikuj)
+        var cancel=view.findViewById<Button>(R.id.cancel)
         modyfikuj.setOnClickListener {
             var nazwa=view.findViewById<EditText>(R.id.nazwa).text.toString()
             val firebase= FirebaseDatabase.getInstance()
@@ -44,6 +47,10 @@ class ModifyProductListFragment : Fragment() {
             }
             nazwaProduktu=nazwa
             Toast.makeText(requireContext(),"Modyfikacja zakończona!", Toast.LENGTH_LONG).show()
+            findNavController().navigate(R.id.action_modifyProductListFragment_to_descriptionListProductsFragment)
+        }
+        cancel.setOnClickListener(){
+            findNavController().navigate(R.id.action_modifyProductListFragment_to_descriptionListProductsFragment)
         }
 
     }

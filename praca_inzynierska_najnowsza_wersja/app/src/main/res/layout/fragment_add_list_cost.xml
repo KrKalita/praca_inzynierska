@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/white"
-    tools:context=".ModifyUserListFragment" >
+    tools:context=".AddListCostFragment">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,7 @@
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="10000" />
+            android:layout_weight="5000" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -29,7 +29,7 @@
                 android:id="@+id/textView5"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Zawód:"
+                android:text="Id:"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -37,13 +37,16 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/zawod"
-                android:layout_width="wrap_content"
+            <EditText
+                android:id="@+id/id_cost"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TextView"
+                android:layout_weight="1"
+                android:background="@drawable/border_red"
+                android:ems="10"
+                android:inputType="textPersonName"
                 android:textColor="@color/black"
-                android:textSize="24sp" />
+                android:textSize="22sp" />
 
         </LinearLayout>
 
@@ -59,36 +62,7 @@
                 android:id="@+id/textView3"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Email:"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-
-            <Space
-                android:layout_width="10dp"
-                android:layout_height="wrap_content" />
-
-            <TextView
-                android:id="@+id/email"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:orientation="horizontal"
-            android:layout_margin="10dp"
-            android:padding="10dp"
-            android:background="@drawable/border">
-
-            <TextView
-                android:id="@+id/textView7"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Imie:"
+                android:text="Opis:"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -97,17 +71,17 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:id="@+id/imie"
+                android:id="@+id/nazwa_cost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/border_red"
                 android:ems="10"
                 android:inputType="textPersonName"
                 android:textColor="@color/black"
-                android:textSize="22sp"
-                android:text="Test" />
-        </LinearLayout>
+                android:textSize="22sp" />
 
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
@@ -120,7 +94,7 @@
                 android:id="@+id/textView8"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Nazwisko:"
+                android:text="Wartość:"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -129,30 +103,30 @@
                 android:layout_height="wrap_content" />
 
             <EditText
-                android:id="@+id/nazwisko"
+                android:id="@+id/value_cost"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_weight="1"
                 android:background="@drawable/border_red"
                 android:ems="10"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:textColor="@color/black"
-                android:text="Test"
-
                 android:textSize="22sp" />
-        </LinearLayout>
 
+        </LinearLayout>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="50dp"
             android:orientation="horizontal"
             android:layout_margin="10dp"
-            android:padding="10dp"
+            android:padding="5dp"
             android:background="@drawable/border">
 
             <TextView
+                android:id="@+id/textView7"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Dostęp:"
+                android:text="Typ:"
                 android:textColor="@color/black"
                 android:textSize="24sp" />
 
@@ -160,40 +134,30 @@
                 android:layout_width="10dp"
                 android:layout_height="wrap_content" />
 
-            <TextView
-                android:id="@+id/dostep"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="TextView"
-                android:textColor="@color/black"
-                android:textSize="24sp" />
+            <Spinner
+                android:id="@+id/typCost"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:maxLines="1"
+                android:background="@drawable/border"/>
+
         </LinearLayout>
 
         <Button
-            android:id="@+id/modyfikuj"
+            android:id="@+id/DodajKoszt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="30dp"
+            android:layout_margin="10dp"
             android:background="@drawable/change_background_button"
-            android:text="Modyfikuj"
+            android:text="Dodaj koszty"
             android:textSize="16sp"
-            android:textColor="@color/white"/>
-        <Button
-            android:id="@+id/cancel_user"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="10dp"
-            android:layout_marginTop="30dp"
-            android:background="@drawable/change_background_button"
-            android:text="Anuluj"
-            android:textSize="16sp"
-            android:textColor="@color/white"/>
+            android:textColor="@color/white"
+            android:fontFamily="monospace"/>
 
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="50000" />
+            android:layout_weight="10000" />
 
     </LinearLayout>
 </FrameLayout>

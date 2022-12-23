@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:padding="2dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:background="@drawable/border">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/imie"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Adam"
+                    android:textColor="#6C6A6A"
+                    android:textSize="25sp" />
+
+
+
+                <TextView
+                    android:id="@+id/nazwisko"
+                    android:layout_width="150dp"
+                    android:layout_height="wrap_content"
+                    android:text="Kowalski"
+                    android:textColor="#6C6A6A"
+                    android:textSize="25sp" />
+
+                <TextView
+                    android:id="@+id/dostep"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="dostep"
+                    android:textColor="#6C6A6A"
+                    android:textSize="20sp"
+                    android:textAlignment="center"
+                    android:background="@drawable/border"/>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/email"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="email"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/zawod"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="prezes"
+                    android:textColor="@color/black"
+                    android:textSize="15sp" />
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2sp" />
+
+                <Button
+                    android:id="@+id/modyfikuj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/change_background_button"
+                    android:text="modyfikuj"
+                    android:textColor="@color/white"
+                    android:padding="1dp"
+                    android:textSize="16sp"
+                    android:layout_margin="1dp"/>
+
+                <Space
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="2sp" />
+
+                <Button
+                    android:id="@+id/usun"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/change_background_button"
+                    android:text="usuń"
+                    android:backgroundTint="@color/red"
+                    android:textSize="16sp"
+                    android:textColor="@color/white"
+                    android:layout_margin="1dp"/>
+
+            </LinearLayout>
+
+
+
+        </LinearLayout>
+    </LinearLayout>
+</androidx.constraintlayout.widget.ConstraintLayout>

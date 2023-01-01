@@ -24,7 +24,6 @@ class RegistrationFragment2 : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_registration2, container, false)
     }
 
@@ -52,7 +51,7 @@ startApp2()
                                 }
                             }
                             .addOnFailureListener{exc ->
-                                Snackbar.make(requireView(), "Zły mail.", Snackbar.LENGTH_SHORT)
+                                Snackbar.make(requireView(), "Zła składnia maila(musi być np: cos@gmail.com) lub różne hasła lub złe hasła(musi być 6 znaków).", Snackbar.LENGTH_SHORT)
                                     .show()
                                 //komunikat o błędzie
                                 Log.d(REG_DEBUG, exc.message.toString())

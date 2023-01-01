@@ -44,7 +44,6 @@ class AdapterListCost(private val view: View,private val dataArray: ArrayList<Da
             valuecCost=Integer.parseInt(holder.value.text.toString())
             view.findNavController().navigate(R.id.action_listCostFragment_to_descriptionListCostFragment)
 
-            //  view.findNavController().navigate(R.id.action_ListProductsFragment_to_descriptionListProductsFragment)
         }
     }
     inner class MyViewHolder(view: View): RecyclerView.ViewHolder(view){

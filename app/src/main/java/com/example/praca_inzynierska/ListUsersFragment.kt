@@ -56,9 +56,7 @@ class ListUsersFragment : BaseFragment() {
         }
 
 //opcje w rozwijanej liscie spinner
-        //?????????????????????
         val options= arrayOf("administrator systemu","kierownik marketingu i logistyki","pracownik biurowy","pracownik magazynowy")
-//        val options= arrayOf("administrator","kierownik","pracownikB","pracownikM")
         spinner.adapter= ArrayAdapter<String>(this.requireActivity(),android.R.layout.simple_list_item_1,options)
 
         spinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{

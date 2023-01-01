@@ -23,7 +23,6 @@ class LoginFragment : BaseFragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_login, container, false)
     }
 
@@ -89,7 +88,7 @@ class LoginFragment : BaseFragment() {
                             if(authRes.user != null) startApp()
                         }
                         .addOnFailureListener{ exc ->
-                            Snackbar.make(requireView(), "Nie ma takiego emaila", Snackbar.LENGTH_SHORT)
+                            Snackbar.make(requireView(), "Nie ma takiego emaila lub hasło jest niepoprawne", Snackbar.LENGTH_SHORT)
                                 .show()
                             //komunikat o błędzie
                             Log.d(LOG_DEUBG, exc.message.toString())

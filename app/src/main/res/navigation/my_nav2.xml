@@ -37,6 +37,9 @@
             android:id="@+id/action_mainPageFragment2_pop"
             app:popUpTo="@id/mainPageFragment2"
             app:popUpToInclusive="true" />
+        <action
+            android:id="@+id/action_mainPageFragment2_to_listMessagesFragment"
+            app:destination="@id/listMessagesFragment" />
     </fragment>
     <fragment
         android:id="@+id/profilFragment2"
@@ -69,6 +72,18 @@
         <action
             android:id="@+id/action_descriptionListProductsFragment_to_modifyProductListFragment"
             app:destination="@id/modifyProductListFragment" />
+        <action
+            android:id="@+id/action_descriptionListProductsFragment_self2"
+            app:destination="@id/descriptionListProductsFragment" />
+        <action
+            android:id="@+id/action_descriptionListProductsFragment_to_ListProductsFragment"
+            app:destination="@id/ListProductsFragment" />
+        <action
+            android:id="@+id/action_descriptionListProductsFragment_to_stateWarehouseFragment"
+            app:destination="@id/stateWarehouseFragment" />
+        <action
+            android:id="@+id/action_descriptionListProductsFragment_to_listLocationsFragment"
+            app:destination="@id/listLocationsFragment" />
     </fragment>
     <fragment
         android:id="@+id/addListProductsFragment"
@@ -128,4 +143,44 @@
     </fragment>
     <action android:id="@+id/action_global_mainPageFragment2" app:destination="@id/mainPageFragment2" />
     <action android:id="@+id/action_global_profilFragment2" app:destination="@id/profilFragment2" />
+    <fragment
+        android:id="@+id/stateWarehouseFragment"
+        android:name="com.example.praca_inzynierska.StateWarehouseFragment"
+        android:label="fragment_state_warehouse"
+        tools:layout="@layout/fragment_state_warehouse" >
+        <action
+            android:id="@+id/action_stateWarehouseFragment_to_ListProductsFragment"
+            app:destination="@id/ListProductsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/listLocationsFragment"
+        android:name="com.example.praca_inzynierska.ListLocationsFragment"
+        android:label="fragment_list_locations"
+        tools:layout="@layout/fragment_list_locations" >
+        <action
+            android:id="@+id/action_listLocationsFragment_to_addListLocationsFragment"
+            app:destination="@id/addListLocationsFragment" />
+        <action
+            android:id="@+id/action_listLocationsFragment_to_modifyLocationsListFragment"
+            app:destination="@id/modifyLocationsListFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/addListLocationsFragment"
+        android:name="com.example.praca_inzynierska.AddListLocationsFragment"
+        android:label="fragment_add_list_locations"
+        tools:layout="@layout/fragment_add_list_locations" >
+        <action
+            android:id="@+id/action_addListLocationsFragment_to_listLocationsFragment"
+            app:destination="@id/listLocationsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/modifyLocationsListFragment"
+        android:name="com.example.praca_inzynierska.ModifyLocationsListFragment"
+        android:label="fragment_modify_locations_list"
+        tools:layout="@layout/fragment_modify_locations_list" />
+    <fragment
+        android:id="@+id/listMessagesFragment"
+        android:name="com.example.praca_inzynierska.ListMessagesFragment"
+        android:label="fragment_list_messages"
+        tools:layout="@layout/fragment_list_messages" />
 </navigation>

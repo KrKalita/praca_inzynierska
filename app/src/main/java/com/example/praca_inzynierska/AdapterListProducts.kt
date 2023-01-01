@@ -17,6 +17,9 @@ var idProduktu=""
 var wagaProduktu=""
 var stanMagazynowy=""
 var gabarytProduktu=""
+var wagaOpakowania=""
+var wymogi=""
+var numeracjaId="0"
 class AdapterListProducts(private val view: View,private val dataArray: ArrayList<DatabaseRowListProducts>): RecyclerView.Adapter<AdapterListProducts.MyViewHolder>() {
     private lateinit var myRef: DatabaseReference
     private val auth = FirebaseAuth.getInstance()
@@ -28,6 +31,7 @@ class AdapterListProducts(private val view: View,private val dataArray: ArrayLis
     }
 
     override fun getItemCount(): Int {
+
         return dataArray.size
     }
 
@@ -36,15 +40,19 @@ class AdapterListProducts(private val view: View,private val dataArray: ArrayLis
         holder.nazwa.setText(dataArray[holder.adapterPosition].nazwa)
         holder.strefa.setText(dataArray[holder.adapterPosition].strefa)
         holder.id.setText(dataArray[holder.adapterPosition].id)
+        numeracjaId=dataArray[dataArray.size-1].id
+
 
 
         holder.opis.setOnClickListener {
             nazwaProduktu=holder.nazwa.text.toString()
             strefaProduktu=holder.strefa.text.toString()
             idProduktu=holder.id.text.toString()
-            wagaProduktu="test"
-            gabarytProduktu="test"
-            stanMagazynowy="test"
+            wagaProduktu=dataArray[holder.adapterPosition].waga
+            gabarytProduktu=dataArray[holder.adapterPosition].gabaryt
+            stanMagazynowy=dataArray[holder.adapterPosition].stan
+            wagaOpakowania=dataArray[holder.adapterPosition].wagaOpakowania
+            wymogi=dataArray[holder.adapterPosition].wymogi
             view.findNavController().navigate(R.id.action_ListProductsFragment_to_descriptionListProductsFragment)
         }
     }

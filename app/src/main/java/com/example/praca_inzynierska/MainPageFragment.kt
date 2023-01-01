@@ -8,6 +8,8 @@ import android.widget.Toast
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.*
+import kotlinx.android.synthetic.main.fragment_page_main.*
+
 var wyciagnietyZawod=""
 var wyciagnieteImie=""
 var wyciagnieteNazwisko=""
@@ -21,12 +23,18 @@ class MainPageFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_page_main, container, false)
     }
     
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        komunikatySM.setOnClickListener {
+            findNavController().navigate(R.id.action_mainPageFragment2_to_listMessagesFragment)
+        }
+
+
+
     var lista_produktow=view.findViewById<Button>(R.id.lista_produktow)
 
         lista_produktow.setOnClickListener {
@@ -42,13 +50,11 @@ class MainPageFragment : Fragment() {
         var kk=0
         dostepDoRejestracji.setOnClickListener {
             if(wyciagnietyDostep=="user"){
-//                lista_uzytkownikow.isEnabled=false
-//            lista_uzytkownikow.isEnabled=true
                 if(kk==0){
-                    Toast.makeText(requireContext(),"Kliknij jeszcze raz!",Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Kliknij jeszcze raz!",Toast.LENGTH_SHORT).show()
                     kk++
                 }else{
-                    Toast.makeText(requireContext(),"Ta opcja jest przeznaczona tylko dla ADMINISTRATORA",Toast.LENGTH_LONG).show()
+                    Toast.makeText(requireContext(),"Ta opcja jest przeznaczona tylko dla ADMINISTRATORA",Toast.LENGTH_SHORT).show()
                     kk--
                 }
 
@@ -65,13 +71,11 @@ class MainPageFragment : Fragment() {
         var k=0
         lista_uzytkownikow.setOnClickListener {
             if(wyciagnietyDostep=="user"){
-//                lista_uzytkownikow.isEnabled=false
-//            lista_uzytkownikow.isEnabled=true
     if(k==0){
-        Toast.makeText(requireContext(),"Kliknij jeszcze raz!",Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(),"Kliknij jeszcze raz!",Toast.LENGTH_SHORT).show()
         k++
     }else{
-        Toast.makeText(requireContext(),"Ta opcja jest przeznaczona tylko dla ADMINISTRATORA",Toast.LENGTH_LONG).show()
+        Toast.makeText(requireContext(),"Ta opcja jest przeznaczona tylko dla ADMINISTRATORA",Toast.LENGTH_SHORT).show()
     k--
     }
 
@@ -79,10 +83,6 @@ class MainPageFragment : Fragment() {
                 findNavController().navigate(R.id.action_mainPageFragment2_to_listUsersFragment)
             }
 
-        }
-        var przejscie_profile=view.findViewById<Button>(R.id.przejscie_profile)
-        przejscie_profile.setOnClickListener {
-            findNavController().navigate(R.id.action_mainPageFragment2_to_profilFragment2)
         }
         var uid=fbAuth.currentUser?.uid.toString()
         var firebase= FirebaseDatabase.getInstance()
@@ -135,10 +135,10 @@ var kkk=1
                         val newRow10=i.getValue()
                         if(newRow10=="1"){
                             a="0"
-                            Toast.makeText(requireContext(),"Rejestracja wyłączona!!",Toast.LENGTH_LONG).show()
+                            Toast.makeText(requireContext(),"Rejestracja wyłączona!!",Toast.LENGTH_SHORT).show()
                         }else{
                             a="1"
-                            Toast.makeText(requireContext(),"Rejestracja włączona!!",Toast.LENGTH_LONG).show()
+                            Toast.makeText(requireContext(),"Rejestracja włączona!!",Toast.LENGTH_SHORT).show()
                         }
                         myRef.child("dostep").setValue(a)
                     }

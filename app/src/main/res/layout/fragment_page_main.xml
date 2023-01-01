@@ -17,28 +17,15 @@
             android:layout_weight="30000" />
 
         <Button
-            style="?attr/materialButtonOutlinedStyle"
             android:id="@+id/lista_produktow"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginHorizontal="50dp"
             android:layout_marginVertical="10dp"
             android:background="@drawable/change_background_button"
+            android:fontFamily="monospace"
             android:text="Lista produktów"
-            android:fontFamily="monospace"
-            android:textColor="@color/white"/>
-
-        <Button
-            style="?attr/materialButtonOutlinedStyle"
-            android:id="@+id/przejscie_profile"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginHorizontal="50dp"
-            android:layout_marginVertical="10dp"
-            android:background="@drawable/change_background_button"
-            android:fontFamily="monospace"
-            android:textColor="@color/white"
-            android:text="profil" />
+            android:textColor="@color/white" />
 
         <Button
             android:id="@+id/lista_uzytkownikow"
@@ -81,8 +68,8 @@
             android:layout_marginVertical="10dp"
             android:background="@drawable/change_background_button"
             android:fontFamily="monospace"
-            android:textColor="@color/white"
-            android:text="Komunikaty stanu magazynowania" />
+            android:text="Komunikaty o niskim stanie magazynowym"
+            android:textColor="@color/white" />
         <Space
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

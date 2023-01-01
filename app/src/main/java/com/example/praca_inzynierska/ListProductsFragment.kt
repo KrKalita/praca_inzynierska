@@ -36,7 +36,6 @@ class ListProductsFragment : Fragment() {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_products_list, container, false)
     }
 
@@ -44,7 +43,6 @@ class ListProductsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         //inicjalizacja komponentow z xmla
         dodaj2=view.findViewById(R.id.dodaj2)
-//        wpiszTytul=view.findViewById(R.id.wpiszTytul)
         spinner=view.findViewById(R.id.spinner)
         PokazCalaListe=view.findViewById(R.id.PokazCalaListe)
         WyborZRozwijanejListy=view.findViewById(R.id.WyborZRozwijanejListy)
@@ -52,7 +50,7 @@ class ListProductsFragment : Fragment() {
         poleSzukania=view.findViewById(R.id.poleSzukania)
 
         //opcje w rozwijanej liscie
-        val options= arrayOf("przyjęcia towaru","składowania","kompletowania i wydania produktów")
+        val options= arrayOf("przyjęcia towaru","składowania","kompletowania i wydawania produktów")
 
         spinner.adapter= ArrayAdapter<String>(this.requireActivity(),android.R.layout.simple_list_item_1,options)
 
@@ -73,15 +71,7 @@ class ListProductsFragment : Fragment() {
         recyclerview2.layoutManager= GridLayoutManager(context, 1)
 //jak przycisne dodaj to dodaje do fire base jeden rekord z wybraną opcją z listy rozwijanej i tytułem
         dodaj2.setOnClickListener {
-
-//            val tytul=wpiszTytul.text.toString()
-//            if(tytul!=""){
-//                val typ_produktu=CoWybrales
-//                val firebaseInput=DatabaseRowListProducts("id1",tytul,typ_produktu)
-//                myRef.child(tytul).setValue(firebaseInput)
-//            }
             findNavController().navigate(R.id.action_ListProductsFragment_to_addListProductsFragment)
-
         }
 //aktualizacja
 
@@ -116,7 +106,7 @@ class ListProductsFragment : Fragment() {
                     tabbb.add(tabbb[4]+1)
                 }
 
-                for (j3 in pozycja+7..100){
+                for (j3 in pozycja+7..200){
                     if(calyStringRekordu[j3]==','||calyStringRekordu[j3]==')'){
                         break
                     }else {
@@ -197,6 +187,7 @@ class ListProductsFragment : Fragment() {
                 listOfItems=ArrayList()
                 for(i in dataSnapshot.children){
                     val newRow=i.getValue(DatabaseRowListProducts::class.java)
+                    val newRow22=i.getValue(DatabaseRowListProducts::class.java)
                     listOfItems.add(newRow!!)
                 }
                 ListaRekordowDoModyfikacji =listOfItems//lista wykorzytywana do modyfikacji

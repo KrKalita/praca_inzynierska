@@ -32,6 +32,7 @@ class DescriptionListCostFragment : Fragment() {
         view.findViewById<TextView>(R.id.id_cost).text= idCost
         view.findViewById<TextView>(R.id.nazwa_cost).text= nazwaCost
         view.findViewById<TextView>(R.id.typCost).text= typCost
+        view.findViewById<TextView>(R.id.date_cost).text=dateCost
         view.findViewById<TextView>(R.id.value_cost).text= valuecCost.toString()
         var usun_cost=view.findViewById<Button>(R.id.usun_cost)
         var wroc_cost=view.findViewById<Button>(R.id.wroc_cost)

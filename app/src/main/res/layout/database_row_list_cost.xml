@@ -70,8 +70,6 @@
                         android:textColor="#6C6A6A"
                         android:textSize="20sp" />
 
-
-
                 </LinearLayout>
 
                 <LinearLayout
@@ -96,6 +94,30 @@
                         android:textColor="#6C6A6A"
                         android:textSize="20sp" />
 
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_marginStart="4dp"
+                        android:id="@+id/desc_date_cost"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:text="Data:"
+                        android:textColor="#6C6A6A"
+                        android:textSize="20sp" />
+
+                    <TextView
+                        android:id="@+id/date_cost"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="01.01.2022"
+                        android:textColor="#6C6A6A"
+                        android:textSize="20sp" />
+
 
                     <Button
                         android:id="@+id/opis_cost"
@@ -104,8 +126,8 @@
                         android:background="@drawable/change_background_button"
                         android:text="opis"
                         android:textSize="16sp" />
-
                 </LinearLayout>
+
             </LinearLayout>
         </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

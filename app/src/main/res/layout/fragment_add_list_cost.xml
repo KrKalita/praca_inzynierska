@@ -142,6 +142,39 @@
                 android:background="@drawable/border"/>
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/border">
+
+            <TextView
+                android:id="@+id/textView9"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data:"
+                android:textColor="@color/black"
+                android:textSize="24sp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+
+            <Button
+                android:id="@+id/DateCost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_red"
+                android:ems="10"
+                android:text="Wybierz date"
+                android:textAlignment="center"
+                style="?android:spinnerStyle"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
+        </LinearLayout>
 
         <Button
             android:id="@+id/DodajKoszt"
@@ -160,4 +193,5 @@
             android:layout_weight="10000" />
 
     </LinearLayout>
+
 </FrameLayout>

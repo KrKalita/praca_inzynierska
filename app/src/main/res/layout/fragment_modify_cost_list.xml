@@ -134,6 +134,36 @@
                 android:textSize="22sp" />
         </LinearLayout>
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:orientation="horizontal"
+            android:layout_margin="10dp"
+            android:padding="10dp"
+            android:background="@drawable/border">
+        <TextView
+            android:layout_marginStart="4dp"
+            android:id="@+id/desc_date_cost"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Data:"
+            android:textColor="@color/black"
+            android:textSize="24sp" />
+
+            <Space
+                android:layout_width="10dp"
+                android:layout_height="wrap_content" />
+        <Button
+            android:id="@+id/date_cost_button"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/border_red"
+            android:ems="10"
+            android:textAlignment="center"
+            android:textColor="@color/black"
+            android:textSize="22sp"/>
+    </LinearLayout>
 
         <Space
             android:layout_width="wrap_content"

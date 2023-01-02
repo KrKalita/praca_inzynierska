@@ -15,6 +15,7 @@ var idCost=""
 var nazwaCost=""
 var valuecCost=0
 var typCost=""
+var dateCost=""
 
 class AdapterListCost(private val view: View,private val dataArray: ArrayList<DatabaseRowListCost>): RecyclerView.Adapter<AdapterListCost.MyViewHolder>() {
     private lateinit var myRef: DatabaseReference
@@ -36,12 +37,15 @@ class AdapterListCost(private val view: View,private val dataArray: ArrayList<Da
         holder.typ.setText(dataArray[holder.adapterPosition].typ)
         holder.id.setText(dataArray[holder.adapterPosition].id)
         holder.value.setText(dataArray[holder.adapterPosition].value.toString())
+        holder.date.setText(dataArray[holder.adapterPosition].data)
+
 
         holder.opis.setOnClickListener {
             nazwaCost=holder.nazwa.text.toString()
             typCost=holder.typ.text.toString()
             idCost=holder.id.text.toString()
             valuecCost=Integer.parseInt(holder.value.text.toString())
+            dateCost=holder.date.text.toString()
             view.findNavController().navigate(R.id.action_listCostFragment_to_descriptionListCostFragment)
 
         }
@@ -52,5 +56,6 @@ class AdapterListCost(private val view: View,private val dataArray: ArrayList<Da
         val typ = view.findViewById<TextView>(R.id.typCost)
         val value = view.findViewById<TextView>(R.id.value_cost)
         val opis = view.findViewById<Button>(R.id.opis_cost)
+        val date = view.findViewById<TextView>(R.id.date_cost)
     }
 }

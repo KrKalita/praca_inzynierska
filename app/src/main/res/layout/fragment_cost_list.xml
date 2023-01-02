@@ -49,45 +49,153 @@
             android:layout_height="match_parent"
             android:layout_weight="100000000" />
 
+
+        <Spinner
+            android:id="@+id/spinnerCost"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:background="@drawable/border"/>
+
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="30dp"
             android:background="@color/white"
             android:orientation="horizontal">
 
-            <Spinner
-                android:id="@+id/spinnerCost"
+
+
+            <Button
+                android:id="@+id/DateCostBetween1"
                 android:layout_width="match_parent"
-                android:layout_height="30dp"
-                android:background="@drawable/border"/>
+                android:visibility="visible"
+                android:layout_height="wrap_content"
+                android:background="@drawable/border_red"
+                android:ems="10"
+                android:layout_weight="1"
+                android:text="Wybierz date"
+                android:textAlignment="center"
+                style="?android:spinnerStyle"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+                <TextView
+                    android:layout_width="20dp"
+                    android:layout_height="match_parent"
+                    android:textAlignment="center"
+                    android:gravity="center"
+                    android:id="@+id/DateCostBetween2"
+                    android:textSize="20dp"
+                    android:textColor="@color/black"
+                    android:text="-"
+                    />
+
+                <Button
+                    android:id="@+id/DateCostExact"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/border_red"
+                    android:visibility="visible"
+                    android:ems="10"
+                    android:gravity="center"
+                    android:layout_weight="1"
+                    android:text="Wybierz date"
+                    android:textAlignment="center"
+                    style="?android:spinnerStyle"
+                    android:textColor="@color/black"
+                    android:textSize="18sp" />
+            <Button
+                android:id="@+id/DateCostBetween3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/border_red"
+                android:visibility="visible"
+                android:ems="10"
+                android:text="Wybierz date"
+                android:textAlignment="center"
+                style="?android:spinnerStyle"
+                android:textColor="@color/black"
+                android:textSize="18sp" />
+
         </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
-
+            android:layout_height="210dp"
+            android:orientation="vertical"
+            >
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="10dp" />
 
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp">
+                <Button
+                    android:id="@+id/sumujCostDate"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/change_background_button"
+                    android:text="Sumuj koszty w miesiącu"
+                    android:visibility="visible"
+                    android:textSize="16sp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/white"/>
+                <Button
+                    android:id="@+id/sumujCostBetween"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/change_background_button"
+                    android:text="Sumuj koszty w przedziale czasowym"
+                    android:visibility="visible"
+                    android:textSize="16sp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/white"/>
+                <Button
+                    android:id="@+id/ConfirmCalculate"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/change_background_button"
+                    android:visibility="visible"
+                    android:text="Potwierdź"
+                    android:textSize="16sp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/white"/>
+                <Button
+                    android:id="@+id/CancelCalculate"
+                    android:layout_height="match_parent"
+                    android:layout_width="0dp"
+                    android:layout_margin="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/change_background_button"
+                    android:visibility="visible"
+                    android:text="Anuluj"
+                    android:textSize="16sp"
+                    android:fontFamily="monospace"
+                    android:textColor="@color/white"/>
+
+            </LinearLayout>
             <Button
                 android:id="@+id/dodajCost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
                 android:layout_weight="10000"
                 android:background="@drawable/change_background_button"
                 android:text="Dodaj nowe koszty"
                 android:textSize="16sp"
                 android:fontFamily="monospace"
                 android:textColor="@color/white"/>
-
             <Button
                 android:id="@+id/SzukajTypuCost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
                 android:background="@drawable/change_background_button"
                 android:text="Wyszukaj po wybranej opcji"
                 android:textSize="16sp"
@@ -97,15 +205,13 @@
             <Button
                 android:id="@+id/PokazCalaListeCost"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
+                android:layout_height="40dp"
+                android:layout_margin="5dp"
                 android:background="@drawable/change_background_button"
                 android:text="Pokaż pełną listę"
                 android:textSize="16sp"
                 android:fontFamily="monospace"
                 android:textColor="@color/white"/>
-
         </LinearLayout>
-
     </LinearLayout>
 </FrameLayout>

@@ -129,6 +129,35 @@
 
 
         </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:orientation="horizontal"
+            android:layout_margin="5dp"
+            android:padding="5dp"
+            android:background="@drawable/border">
+
+            <TextView
+                android:id="@+id/desc_date_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Data:"
+                android:textColor="@color/black"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/date_cost"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:autoSizeMinTextSize="2dp"
+                android:text="data"
+                android:textColor="#6C6A6A"
+                android:textSize="20sp" />
+
+
+
+        </LinearLayout>
 
 
 

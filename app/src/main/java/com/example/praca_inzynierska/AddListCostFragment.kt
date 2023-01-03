@@ -4,6 +4,7 @@ import android.app.DatePickerDialog
 import android.app.DatePickerDialog.OnDateSetListener
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +14,8 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.fragment.findNavController
 import com.google.firebase.database.DatabaseReference
 import com.google.firebase.database.FirebaseDatabase
+import kotlinx.android.synthetic.main.fragment_add_list_cost.view.*
+import kotlinx.android.synthetic.main.fragment_cost_list.*
 import java.util.*
 
 
@@ -23,6 +26,7 @@ private lateinit var myRef:DatabaseReference
     private lateinit var spinner: Spinner
     private lateinit var datePickerDialog: DatePickerDialog
     private lateinit var dateButton: Button
+    private lateinit var idCost:TextView
     private lateinit var calendar: Calendar
     var data=""
 
@@ -38,7 +42,13 @@ private lateinit var myRef:DatabaseReference
         var dodajCost=view.findViewById<Button>(R.id.DodajKoszt)
         spinner=view.findViewById(R.id.typCost)
         dateButton= view.findViewById(R.id.DateCost)
+        idCost=view.findViewById(R.id.id_cost)
+        CoWybralesCost=getDate()
         dateButton.setText(getDate())
+        data=getDate()
+        val id= (lastidcost+1).toString()
+        idCost.text=id
+
 
         val options= arrayOf("Bieżące","Przyjęcia towaru","Składowania","Kompletowania i wydania produktów","inne")
 
@@ -78,20 +88,24 @@ private lateinit var myRef:DatabaseReference
         }
 
         dodajCost.setOnClickListener{
-            var nazwa=view.findViewById<EditText>(R.id.nazwa_cost).text.toString()
-            var id=view.findViewById<EditText>(R.id.id_cost).text.toString()
-            var value=Integer.parseInt(view.findViewById<EditText>(R.id.value_cost).text.toString())
-            var typ= CoWybralesCostAdd
+
+            val nazwa=view.findViewById<EditText>(R.id.nazwa_cost).text.toString()
+            val value=view.findViewById<EditText>(R.id.value_cost).text.toString()
+            val typ= CoWybralesCostAdd
 
 
             val firebase= FirebaseDatabase.getInstance()
             myRef=firebase.getReference("lista_kosztow")
-            if(id!=""){
-                val firebaseInput= DatabaseRowListCost(id,nazwa,data,value,typ)
+            if(nazwa.isNotBlank()&&value.toString().isNotBlank()){
+                val firebaseInput= DatabaseRowListCost(id,nazwa,data,Integer.parseInt(value),typ)
                 myRef.child(id).setValue(firebaseInput)
+                findNavController().navigate(R.id.action_addListCostFragment_to_listCostFragment)
+                Toast.makeText(requireContext(),"Dodano koszty!",Toast.LENGTH_LONG).show()
             }
-            findNavController().navigate(R.id.action_addListCostFragment_to_listCostFragment)
-            Toast.makeText(requireContext(),"Dodano koszty!",Toast.LENGTH_LONG).show()
+            else{
+                Toast.makeText(requireContext(),"Uzupełnij wszystkie pola!",Toast.LENGTH_LONG).show()
+
+            }
         }
 
     }

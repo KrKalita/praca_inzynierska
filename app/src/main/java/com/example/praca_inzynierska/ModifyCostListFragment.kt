@@ -22,7 +22,6 @@ class ModifyCostListFragment : Fragment() {
     private lateinit var myRef:DatabaseReference
     private lateinit var spinner: Spinner
     private lateinit var dateButton: Button
-    private var CoWybralesCostModify = ""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -71,17 +70,25 @@ class ModifyCostListFragment : Fragment() {
         var modyfikuj=view.findViewById<Button>(R.id.modyfikuj_cost)
         var cancel_cost=view.findViewById<Button>(R.id.cancel_cost)
         modyfikuj.setOnClickListener {
-            nazwaCost =view.findViewById<EditText>(R.id.nazwa_cost).text.toString()
-            valuecCost =Integer.parseInt(view.findViewById<EditText>(R.id.value_cost).text.toString())
+            val nazwa =view.findViewById<EditText>(R.id.nazwa_cost).text.toString()
+            val value =view.findViewById<EditText>(R.id.value_cost).text.toString()
             val firebase= FirebaseDatabase.getInstance()
             myRef=firebase.getReference("lista_kosztow")
-                val firebaseInput=DatabaseRowListCost(idCost, nazwaCost, dateCost,
-                    valuecCost, typCost)
+            if(nazwa.isNotBlank()&& value.isNotBlank()) {
+                val firebaseInput = DatabaseRowListCost(
+                    idCost, nazwa, dateCost,
+                    Integer.parseInt(value), typCost
+                )
                 myRef.child(idCost).setValue(firebaseInput)
+                Toast.makeText(requireContext(),"Modyfikacja zakończona!", Toast.LENGTH_LONG).show()
 
-            Toast.makeText(requireContext(),"Modyfikacja zakończona!", Toast.LENGTH_LONG).show()
+                findNavController().navigate(R.id.action_modifyCostListFragment_to_descriptionListCostFragment)
+            }
+            else{
 
-            findNavController().navigate(R.id.action_modifyCostListFragment_to_descriptionListCostFragment)
+                Toast.makeText(requireContext(),"Wypełnij wszystkie pola!", Toast.LENGTH_LONG).show()
+
+            }
         }
         cancel_cost.setOnClickListener(){
             findNavController().navigate(R.id.action_modifyCostListFragment_to_descriptionListCostFragment)

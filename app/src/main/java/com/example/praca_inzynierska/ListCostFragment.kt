@@ -3,6 +3,7 @@ package com.example.praca_inzynierska
 import android.app.DatePickerDialog
 import android.app.Dialog
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -20,9 +21,9 @@ import kotlin.collections.ArrayList
 
 //zmienne globalne
 var ListaRekordowDoModyfikacjiCost=ArrayList<DatabaseRowListCost>()
-var CoWybralesCost=""
-var wielkoscCost=0
-var wielkosc2Cost=0
+var ListaSzukanychRekordowCost=ArrayList<DatabaseRowListCost>()
+var CoWybralesCost="Bieżące"
+var lastidcost=1
 
 class ListCostFragment : Fragment() {
 
@@ -36,18 +37,17 @@ class ListCostFragment : Fragment() {
     private lateinit var poleSzukania: EditText
     private  lateinit var listOfItems:ArrayList<DatabaseRowListCost>
     private lateinit var spinner: Spinner
-    private lateinit var DateBetween1:Button
-    private lateinit var DateBetween2:TextView
-    private lateinit var DateBetween3:Button
-    private lateinit var DateExact:Button
+    private lateinit var DateYearSpinner:Spinner
+    private lateinit var DateMonthSpinner:Spinner
     private lateinit var ConfirmDate:Button
     private lateinit var CancelDate:Button
     private lateinit var CalculateCostExact:Button
-    private lateinit var CalculateCostBetween:Button
+    private lateinit var LayoutDate:LinearLayout
 
 
     private lateinit var calendar: Calendar
-    var datasuma=""
+    var datasumamiesiac=0
+    var datasumarok=""
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -65,78 +65,74 @@ class ListCostFragment : Fragment() {
         PokazCalaListe=view.findViewById(R.id.PokazCalaListeCost)
         WyborZRozwijanejListy=view.findViewById(R.id.SzukajTypuCost)
         Szukaj=view.findViewById(R.id.szukajCost)
+        LayoutDate=view.findViewById(R.id.LayoutDatePick)
 
 
+        DateYearSpinner=view.findViewById(R.id.DateYear)
+        DateMonthSpinner=view.findViewById(R.id.DateMonth)
+
+        val optionsmonth= arrayOf("Styczeń","Luty","Marzec","Kwiecień","Maj","Czerwiec","Lipiec","Sierpień","Wrzesień","Październik","Listopad","Grudzień")
+        val optionsyear= arrayOf("2022","2023","2024","2025","2026","2027","2028","2029","2030")
+
+        DateYear.adapter= ArrayAdapter<String>(this.requireActivity(),android.R.layout.simple_list_item_1,optionsyear)
+
+        var wybranyrok=""
+        var wybranymiesiac=0
+        DateYearSpinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                wybranyrok=optionsyear.get(p2)//opcja ktora wybralem
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
+        DateMonthSpinner.adapter= ArrayAdapter<String>(this.requireActivity(),android.R.layout.simple_list_item_1,optionsmonth)
+
+        DateMonthSpinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
+            override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
+                wybranymiesiac=p2//opcja ktora wybralem
+            }
+
+            override fun onNothingSelected(p0: AdapterView<*>?) {
+            }
+        }
         var suma=0
 
         poleSzukania=view.findViewById(R.id.poleSzukaniaCost)
-        DateBetween1=view.findViewById(R.id.DateCostBetween1)
-        DateBetween2=view.findViewById(R.id.DateCostBetween2)
-        DateBetween3=view.findViewById(R.id.DateCostBetween3)
-        DateExact=view.findViewById(R.id.DateCostExact)
         ConfirmDate=view.findViewById(R.id.ConfirmCalculate)
         CancelDate=view.findViewById(R.id.CancelCalculate)
-        CalculateCostBetween=view.findViewById(R.id.sumujCostBetween)
         CalculateCostExact=view.findViewById(R.id.sumujCostDate)
-
-
-        DateBetween1.visibility=View.GONE
-        DateBetween2.visibility=View.GONE
-        DateBetween3.visibility=View.GONE
-        DateExact.visibility=View.GONE
-        CalculateCostBetween.visibility=View.GONE//chwila
         ConfirmDate.visibility=View.GONE
         CancelDate.visibility=View.GONE
+        LayoutDate.visibility=View.GONE
 
         CalculateCostExact.setOnClickListener(){
-            DateBetween1.visibility=View.GONE
-            DateBetween2.visibility=View.GONE
-            DateBetween3.visibility=View.GONE
-            DateExact.visibility=View.VISIBLE
             CalculateCostExact.visibility=View.GONE
-            CalculateCostBetween.visibility=View.GONE
             ConfirmDate.visibility=View.VISIBLE
             CancelDate.visibility=View.VISIBLE
-        }
-        CalculateCostBetween.setOnClickListener(){
-            DateBetween1.visibility=View.VISIBLE
-            DateBetween2.visibility=View.VISIBLE
-            DateBetween3.visibility=View.VISIBLE
-            DateExact.visibility=View.GONE
-            CalculateCostExact.visibility=View.GONE
-            CalculateCostBetween.visibility=View.GONE
-            ConfirmDate.visibility=View.VISIBLE
-            CancelDate.visibility=View.VISIBLE
+            LayoutDate.visibility=View.VISIBLE
         }
         CancelDate.setOnClickListener(){
-            DateBetween1.visibility=View.GONE
-            DateBetween2.visibility=View.GONE
-            DateBetween3.visibility=View.GONE
-            DateExact.visibility=View.GONE
             CalculateCostExact.visibility=View.VISIBLE
-            CalculateCostBetween.visibility=View.GONE //chwila
-            ConfirmDate.visibility=View.GONE
             CancelDate.visibility=View.GONE
-
+            ConfirmDate.visibility=View.GONE
+            LayoutDate.visibility=View.GONE
         }
         ConfirmDate.setOnClickListener(){
-            DateBetween1.visibility=View.GONE
-            DateBetween2.visibility=View.GONE
-            DateBetween3.visibility=View.GONE
-            DateExact.visibility=View.GONE
             CalculateCostExact.visibility=View.VISIBLE
-            CalculateCostBetween.visibility=View.GONE //chwila
             ConfirmDate.visibility=View.GONE
             CancelDate.visibility=View.GONE
-
+            LayoutDate.visibility=View.GONE
+            datasumamiesiac=wybranymiesiac
+            datasumarok=wybranyrok
             for (i in listOfItems){
-                if(i.data.split('.')[1]==datasuma.split('.')[1])
+                if(i.data.split('.')[1]==(wybranymiesiac+1).toString()&&i.data.split('.')[2]==wybranyrok)
                 {
                     suma+=i.value
                 }
             }
             var sumakosztow=""
-            when(Integer.parseInt(datasuma.split('.')[1])) {
+            when(wybranymiesiac+1) {
                 1 -> sumakosztow="Styczniu"
                 2 -> sumakosztow="Lutym"
                 3 -> sumakosztow="Marcu"
@@ -150,7 +146,8 @@ class ListCostFragment : Fragment() {
                 11 -> sumakosztow="Listopadzie"
                 12 -> sumakosztow="Grudniu"
             }
-            Toast.makeText(requireContext(),"W $sumakosztow koszty wynoszą $suma!",Toast.LENGTH_SHORT).show()
+            Toast.makeText(requireContext(),"W $sumakosztow $wybranyrok koszty wynoszą $suma!",Toast.LENGTH_SHORT).show()
+            suma=0
         }
 
 
@@ -162,77 +159,10 @@ class ListCostFragment : Fragment() {
         spinner.onItemSelectedListener=object : AdapterView.OnItemSelectedListener{
             override fun onItemSelected(p0: AdapterView<*>?, p1: View?, p2: Int, p3: Long) {
                 CoWybralesCost=options.get(p2)//opcja ktora wybralem
-                dodanieDoAdapteraWszystkichElementowCost(view)
             }
 
             override fun onNothingSelected(p0: AdapterView<*>?) {
             }
-        }
-        class SelectDateFragment : DialogFragment(), DatePickerDialog.OnDateSetListener {
-            override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-                val calendar = Calendar.getInstance()
-                val yy = calendar[Calendar.YEAR]
-                val mm = calendar[Calendar.MONTH]
-                val dd = calendar[Calendar.DAY_OF_MONTH]
-                return DatePickerDialog(requireActivity(), this, yy, mm, dd)
-            }
-
-            override fun onDateSet(view: DatePicker, yy: Int, mm: Int, dd: Int) {
-                populateSetDate(yy, mm+1 , dd)
-            }
-            var data1=""
-            var data2=""
-
-
-            fun populateSetDate(y: Int, m: Int, d: Int) {
-                if(DateExact.visibility==View.VISIBLE){
-                    datasuma="$d.$m.$y"
-                    when(m) {
-                        1 -> DateExact.text="Styczeń $y"
-                        2 -> DateExact.text="Luty $y"
-                        3 -> DateExact.text="Marzec $y"
-                        4 -> DateExact.text="Kwiecień $y"
-                        5 -> DateExact.text="Maj $y"
-                        6 -> DateExact.text="Czerwiec $y"
-                        7 -> DateExact.text="Lipiec $y"
-                        8 -> DateExact.text="Sierpień $y"
-                        9 -> DateExact.text="Wrzesień $y"
-                        10 -> DateExact.text="Październik $y"
-                        11 -> DateExact.text="Listopad $y"
-                        12 -> DateExact.text="Grudzień $y"
-                    }
-                }
-                if((DateBetween1.text=="Wybierz date"||DateBetween1.text==data1)&&DateBetween1.visibility==View.VISIBLE){
-                    data1="$d.$m.$y"
-                    DateBetween1.text=data1
-                }
-                else{
-                    data1="Wybierz date"
-                    DateBetween1.text=data1
-                }
-                if((DateBetween3.text=="Wybierz date"||DateBetween3.text==data2)&&DateBetween3.visibility==View.VISIBLE){
-                    data2="$d.$m.$y"
-                    DateBetween3.text=data2
-                }
-                else{
-                    DateBetween3.text="Wybierz date"
-                }
-            }
-        }
-        DateExact.setOnClickListener(){
-            val newFragment: DialogFragment = SelectDateFragment()
-            newFragment.show(requireFragmentManager(), "DatePicker")
-
-        }
-        DateBetween1.setOnClickListener(){
-            val newFragment: DialogFragment = SelectDateFragment()
-            newFragment.show(requireFragmentManager(), "DatePicker")
-
-        }
-        DateBetween3.setOnClickListener(){
-            val newFragment: DialogFragment = SelectDateFragment()
-            newFragment.show(requireFragmentManager(), "DatePicker")
-
         }
 
         //wchodze do pliku w realtime database lista_produktow i tam cos robie
@@ -255,57 +185,43 @@ class ListCostFragment : Fragment() {
         }
 //        //zalezy od wybranej opcji w liscie rozwijanej, jak przycisniemy ten przycisk to sortuje po wybranej opcji liste
         WyborZRozwijanejListy.setOnClickListener {
-            var wybor=""
-            var index=0
-            var tab= mutableListOf<Int>()
-            for(i in ListaRekordowDoModyfikacjiCost){
-//kod do odczytania typ_produktu
+            ListaRekordowDoModyfikacjiCost.clear()
 
-                var calyStringRekordu=i.toString()
-                var wybor=""
-                var pozycja=0
-                var tabbb= arrayListOf(0,1,2,3,4,5)
-                for (j1 in 0..100){
-                    for (j2 in tabbb){
-                        wybor=wybor+calyStringRekordu[j2]
-                    }
-                    if(wybor=="typ"){//kod jest bardzo elastyczny do danej sytuacji i wystarczy podać miejsce w, którym chcesz wycignac wartosc
-                        wybor=""
-                        pozycja=j1
-                        break
-                    }else{
-                        wybor=""
-                    }
-                    tabbb.remove(tabbb[0])
-                    tabbb.add(tabbb[4]+1)
-                }
-
-                for (j3 in pozycja+7..100){
-                    if(calyStringRekordu[j3]==','||calyStringRekordu[j3]==')'){
-                        break
-                    }else {
-                        wybor=wybor+calyStringRekordu[j3]
-                    }
-
-                }
-                if(wybor== CoWybralesCost){
-                    index++
-                }else{
-                    tab.add(index)
-                    index++
-                }
-                wybor=""
+            for(i in listOfItems)
+            {
+            if(CoWybralesCost==i.typ){
+                ListaRekordowDoModyfikacjiCost.add(i)
             }
-            //tab przechowuje wszystkie numery rekordow, ktore beda usuniete w adapterze na potrzeby podgladu
-            var kkk=tab.size-1
-            for(i in tab){
-
-                var cos= ListaRekordowDoModyfikacjiCost[tab[kkk]]
-                ListaRekordowDoModyfikacjiCost.remove(cos)
-                kkk--
             }
             //aktualizowanie, żeby zmienić rekordy w adapterze
             setupAdapter(view,ListaRekordowDoModyfikacjiCost)//view po to żeby można było wykorzystac w adapterze findnavcontroller
+        }
+
+        Szukaj.setOnClickListener(){
+            ListaSzukanychRekordowCost.clear()
+            if(poleSzukania.text.isNotBlank()){
+
+
+            if(ListaRekordowDoModyfikacjiCost.isNotEmpty()){
+                for(i in ListaRekordowDoModyfikacjiCost){
+                    if(i.nazwa.lowercase().contains(poleSzukania.text.toString().lowercase())){
+                        ListaSzukanychRekordowCost.add(i)
+                    }
+                }
+                setupAdapter(view, ListaSzukanychRekordowCost)
+            }
+            else{
+                for (i in listOfItems){
+                    if(i.nazwa.lowercase().contains(poleSzukania.text.toString().lowercase())){
+                        ListaSzukanychRekordowCost.add(i)
+                    }
+                }
+                setupAdapter(view, ListaSzukanychRekordowCost)
+            }
+        }
+            else{
+            setupAdapter(view,listOfItems)
+        }
         }
 
     }
@@ -322,8 +238,7 @@ class ListCostFragment : Fragment() {
                     var newRow=i.getValue(DatabaseRowListCost::class.java)
                     listOfItems.add(newRow!!)
                 }
-                ListaRekordowDoModyfikacjiCost =listOfItems//lista wykorzytywana do modyfikacji
-
+                ListaRekordowDoModyfikacjiCost.clear()
                 wielkosc2 =listOfItems.size
 
                 setupAdapter(view,listOfItems)
@@ -338,16 +253,14 @@ class ListCostFragment : Fragment() {
 
         }else{
             recyclerviewcost.adapter= AdapterListCost(view,arrayData)
+            if(arrayData.isNotEmpty()){
+            lastidcost=Integer.parseInt(arrayData.last().id)
+            }
+            else{
+                lastidcost=0
+            }
         }
 
     }
 
-    private fun getDate():String {
-        calendar = Calendar.getInstance()
-        var y =calendar.get(Calendar.YEAR)
-        var m =calendar.get(Calendar.MONTH)
-        var d =calendar.get(Calendar.DAY_OF_MONTH)
-        m+=1
-        return("$d.$m.$y")
-    }
 }

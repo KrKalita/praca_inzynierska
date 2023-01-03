@@ -59,62 +59,21 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="30dp"
+            android:id="@+id/LayoutDatePick"
             android:background="@color/white"
             android:orientation="horizontal">
-
-
-
-            <Button
-                android:id="@+id/DateCostBetween1"
-                android:layout_width="match_parent"
-                android:visibility="visible"
-                android:layout_height="wrap_content"
-                android:background="@drawable/border_red"
-                android:ems="10"
+            <Spinner
+                android:id="@+id/DateMonth"
                 android:layout_weight="1"
-                android:text="Wybierz date"
-                android:textAlignment="center"
-                style="?android:spinnerStyle"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
-                <TextView
-                    android:layout_width="20dp"
-                    android:layout_height="match_parent"
-                    android:textAlignment="center"
-                    android:gravity="center"
-                    android:id="@+id/DateCostBetween2"
-                    android:textSize="20dp"
-                    android:textColor="@color/black"
-                    android:text="-"
-                    />
-
-                <Button
-                    android:id="@+id/DateCostExact"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/border_red"
-                    android:visibility="visible"
-                    android:ems="10"
-                    android:gravity="center"
-                    android:layout_weight="1"
-                    android:text="Wybierz date"
-                    android:textAlignment="center"
-                    style="?android:spinnerStyle"
-                    android:textColor="@color/black"
-                    android:textSize="18sp" />
-            <Button
-                android:id="@+id/DateCostBetween3"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="30dp"
+                android:background="@drawable/border"/>
+            <Spinner
+                android:id="@+id/DateYear"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
                 android:layout_weight="1"
-                android:background="@drawable/border_red"
-                android:visibility="visible"
-                android:ems="10"
-                android:text="Wybierz date"
-                android:textAlignment="center"
-                style="?android:spinnerStyle"
-                android:textColor="@color/black"
-                android:textSize="18sp" />
+                android:background="@drawable/border"/>
 
         </LinearLayout>
 
@@ -142,18 +101,7 @@
                     android:textSize="16sp"
                     android:fontFamily="monospace"
                     android:textColor="@color/white"/>
-                <Button
-                    android:id="@+id/sumujCostBetween"
-                    android:layout_height="match_parent"
-                    android:layout_width="0dp"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:background="@drawable/change_background_button"
-                    android:text="Sumuj koszty w przedziale czasowym"
-                    android:visibility="visible"
-                    android:textSize="16sp"
-                    android:fontFamily="monospace"
-                    android:textColor="@color/white"/>
+
                 <Button
                     android:id="@+id/ConfirmCalculate"
                     android:layout_height="match_parent"

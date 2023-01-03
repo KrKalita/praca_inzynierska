@@ -79,6 +79,8 @@ class ModifyCostListFragment : Fragment() {
                     idCost, nazwa, dateCost,
                     Integer.parseInt(value), typCost
                 )
+                nazwaCost=nazwa
+                valuecCost=value.toInt()
                 myRef.child(idCost).setValue(firebaseInput)
                 Toast.makeText(requireContext(),"Modyfikacja zakończona!", Toast.LENGTH_LONG).show()
 

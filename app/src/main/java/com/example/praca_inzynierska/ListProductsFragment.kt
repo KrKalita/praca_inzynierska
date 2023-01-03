@@ -91,7 +91,7 @@ class ListProductsFragment : Fragment() {
                 var wybor=""
                 var pozycja=0
                 var tabbb= arrayListOf(0,1,2,3,4,5)
-                for (j1 in 0..100){
+                for (j1 in 0..200){
                     for (j2 in tabbb){
                         wybor=wybor+calyStringRekordu[j2]
                     }

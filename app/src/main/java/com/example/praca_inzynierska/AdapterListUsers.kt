@@ -28,7 +28,6 @@ class AdapterListUsers ( val dataArray: ArrayList<DatabaseRowListUsers>):Recycle
         holder.email.setText(dataArray[holder.adapterPosition].email)
         holder.dostep.setText(dataArray[holder.adapterPosition].dostep)
         var uidDoUsuniecia=dataArray[holder.adapterPosition].uid
-        //usuwa uzytkownika tylko z listy, a z firebase nie(mozna dodac kod, albo administartor usunie jeszcze w firebase w authetication!!!!!)
         var uid=auth.currentUser?.uid.toString()
         holder.modyfikuj.setOnClickListener {
             val firebase= FirebaseDatabase.getInstance()
